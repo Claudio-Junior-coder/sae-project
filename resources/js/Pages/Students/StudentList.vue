@@ -116,9 +116,7 @@
         confirmDelete(studentId) {
             if (confirm('Realmente deseja remover este registro? (Sim/Não)')) {
                 this.deleteStudent(studentId).then(() => {
-                this.filteredStudents = this.filteredStudents.filter(student => student.id !== studentId);
-                
-                //mesagem de sucesso
+                    this.filteredStudents = this.filteredStudents.filter(student => student.id !== studentId);
                 });
             }
         },
