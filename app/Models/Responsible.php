@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Responsible extends Model
 {
     //
+    protected $table = 'responsibles';
     use HasFactory;
 
     protected $fillable = ['name', 'email', 'password'];

@@ -25,5 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/students', function () {
+    return Inertia::render('Students/StudentList');
+})->middleware(['auth', 'verified'])->name('students');
+
+Route::get('/students/details/{id?}', function ($id = null) {
+    return Inertia::render('Students/StudentDetails', [
+        'studentId' => $id
+    ]);
+})->middleware(['auth', 'verified'])->name('students.details');
+
 
 require __DIR__.'/auth.php';

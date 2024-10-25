@@ -9,9 +9,9 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'responsible_id'];
+    protected $fillable = ['name', 'ra', 'email', 'responsible_id', 'class_id'];
 
-    public function responsible()
+    public function responsibles()
     {
         return $this->belongsTo(Responsible::class);
     }

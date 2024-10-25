@@ -6,6 +6,9 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue'; // Correção: usar { createApp, h } em vez de Vue
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import store from '@/Pages/Store/index'; // Certifique-se de que o store está correto
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -21,6 +24,14 @@ createInertiaApp({
             .use(plugin)
             .use(store)  // Certifique-se de que o store está correto
             .use(ZiggyVue)
+            .use(
+                Toastify,
+                {
+                  autoClose: 3000,
+                  gravity: "top",
+                  position: "right",
+                } 
+              )
             .mount(el);
     },
     progress: {
