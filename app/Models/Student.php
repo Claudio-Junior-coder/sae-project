@@ -9,7 +9,7 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'ra', 'email', 'responsible_id', 'class_id'];
+    protected $fillable = ['name', 'ra', 'email', 'responsible_id', 'class_id', 'final_grade', 'approval_status'];
 
     public function responsibles()
     {
@@ -29,5 +29,18 @@ class Student extends Model
     public function activities()
     {
         return $this->hasMany(Activity::class);
+    }
+
+    public function calculateFinalGrade()
+    {
+        // Obtém as notas dos 4 trimestres e calcula a média
+        $totalGrade = $this->grades()->sum('grade');
+        $count = $this->grades()->count();
+
+        if ($count == 4) { // Verifica se tem 4 notas de trimestres
+            $this->final_grade = $totalGrade / 4;
+            $this->approval_status = $this->final_grade >= 5 ? 'APROVADO' : 'REPROVADO';
+            $this->save();
+        }
     }
 }

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('ra');
             $table->foreignId('responsible_id')->constrained('responsibles')->onDelete('cascade');
             $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
+            $table->decimal('final_grade', 3, 1)->nullable();
+            $table->enum('approval_status', ['APROVADO', 'REPROVADO'])->nullable(); // Status de aprovação
             $table->timestamps();
         });
     }
@@ -29,6 +31,7 @@ return new class extends Migration
         Schema::table('students', function (Blueprint $table) {
             $table->dropForeign(['class_id']);
             $table->dropColumn('class_id');
+            $table->dropColumn(['final_grade', 'approval_status']);
         });
         Schema::dropIfExists('students');
     }

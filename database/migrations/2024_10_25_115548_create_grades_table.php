@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('subject');
             $table->float('grade');
             $table->timestamps();
+
+            // Index para garantir que não haja duplicação de trimestre para um mesmo aluno
+            $table->unique(['student_id', 'period_id']);
         });
     }
 
