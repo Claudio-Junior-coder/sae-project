@@ -7,28 +7,29 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    //
+    public function validadeData($request) {
+        return $request->validate([
+            'name' => 'required|string|max:255',
+            'ra' => 'required|string|max:55',
+            'responsible_id' => 'required',
+            'class_id' => 'required',
+        ]);
+    }
+
     public function index()
     {
-        //
         return response()->json(Student::all());
     }
 
     public function show($id)
     {
-        //
         $student = Student::with(['responsibles', 'grades'])->findOrFail($id);
         return response()->json($student);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'ra' => 'required|string|max:55',
-            'responsible_id' => 'required',
-            'class_id' => 'required',
-        ]);
+         $this->validadeData($request);
 
         $student = Student::create($request->all());
 
@@ -37,12 +38,7 @@ class StudentController extends Controller
 
     public function update(Request $request, Student $student)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'ra' => 'required|string|max:55',
-            'responsible_id' => 'required',
-            'class_id' => 'required',
-        ]);
+        $this->validadeData($request);
 
         $student->update($request->all());
 

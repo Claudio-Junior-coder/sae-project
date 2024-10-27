@@ -45,6 +45,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Alunos
                                 </NavLink>
+                                <NavLink
+                                    :href="route('periods')"
+                                    :active="route().current('periods')"
+                                >
+                                    Períodos
+                                </NavLink>
                             </div>
                         </div>
 
