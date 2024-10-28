@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\ActivityController;
-
+use App\Http\Controllers\BehaviorController;
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -30,4 +30,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/activities', [ActivityController::class, 'store']);
     Route::put('/activities/{activity}', [ActivityController::class, 'update']);
     Route::delete('/activities/{id}', [ActivityController::class, 'destroy']);
+
+    Route::get('/behaviors', [BehaviorController::class, 'index']);
+    Route::get('/behaviors/{behavior}', [BehaviorController::class, 'show']);
+    Route::post('/behaviors', [BehaviorController::class, 'store']);
+    Route::put('/behaviors/{behavior}', [BehaviorController::class, 'update']);
+    Route::delete('/behaviors/{id}', [BehaviorController::class, 'destroy']);
 });

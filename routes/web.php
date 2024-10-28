@@ -59,4 +59,17 @@ Route::get('/activities/details/{id?}', function ($id = null) {
     ]);
 })->middleware(['auth', 'verified'])->name('activities.details');
 
+
+//behaviors
+Route::get('/behaviors', function () {
+    return Inertia::render('Behaviors/BehaviorList');
+})->middleware(['auth', 'verified'])->name('behaviors');
+
+Route::get('/behaviors/details/{id?}', function ($id = null) {
+    return Inertia::render('Behaviors/BehaviorDetails', [
+        'behaviorId' => $id
+    ]);
+})->middleware(['auth', 'verified'])->name('behaviors.details');
+
+
 require __DIR__.'/auth.php';
