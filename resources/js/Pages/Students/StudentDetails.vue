@@ -80,8 +80,6 @@
 import { mapActions, mapState } from 'vuex';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import Toastify from 'toastify-js';
-import 'toastify-js/src/toastify.css';
 
 export default {
   components: {

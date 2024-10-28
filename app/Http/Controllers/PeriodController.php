@@ -50,6 +50,6 @@ class PeriodController extends Controller
         $period = Period::findOrFail($id); 
         $period->delete(); 
         
-        return response()->json(['message' => 'Aluno deletado com sucesso.'], 200);
+        return response()->json(['message' => 'Período deletado com sucesso.'], 200);
     }
 }

@@ -51,6 +51,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Períodos
                                 </NavLink>
+                                <NavLink
+                                    :href="route('activities')"
+                                    :active="route().current('activities')"
+                                >
+                                    Atividades
+                                </NavLink>
                             </div>
                         </div>
 

@@ -48,4 +48,15 @@ Route::get('/periods/details/{id?}', function ($id = null) {
 })->middleware(['auth', 'verified'])->name('periods.details');
 
 
+//activities
+Route::get('/activities', function () {
+    return Inertia::render('Activities/ActivityList');
+})->middleware(['auth', 'verified'])->name('activities');
+
+Route::get('/activities/details/{id?}', function ($id = null) {
+    return Inertia::render('Activities/ActivityDetails', [
+        'activityId' => $id
+    ]);
+})->middleware(['auth', 'verified'])->name('activities.details');
+
 require __DIR__.'/auth.php';
