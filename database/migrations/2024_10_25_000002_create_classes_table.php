@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // Exemplo: "Turma A", "5º Ano B"
-            $table->string('description')->nullable();
-            $table->string('grade'); // Exemplo: "5º Ano"
             $table->timestamps();
         });
     }

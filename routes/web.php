@@ -71,5 +71,16 @@ Route::get('/behaviors/details/{id?}', function ($id = null) {
     ]);
 })->middleware(['auth', 'verified'])->name('behaviors.details');
 
+//classes
+Route::get('/classes', function () {
+    return Inertia::render('Classes/ClassList');
+})->middleware(['auth', 'verified'])->name('classes');
+
+Route::get('/classes/details/{id?}', function ($id = null) {
+    return Inertia::render('Classes/ClassDetails', [
+        'classId' => $id
+    ]);
+})->middleware(['auth', 'verified'])->name('classes.details');
+
 
 require __DIR__.'/auth.php';

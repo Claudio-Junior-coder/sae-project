@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BehaviorController;
+use App\Http\Controllers\ClassromController;
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -36,4 +37,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/behaviors', [BehaviorController::class, 'store']);
     Route::put('/behaviors/{behavior}', [BehaviorController::class, 'update']);
     Route::delete('/behaviors/{id}', [BehaviorController::class, 'destroy']);
+
+    Route::get('/classes', [ClassromController::class, 'index']);
+    Route::get('/classes/{classroom}', [ClassromController::class, 'show']);
+    Route::post('/classes', [ClassromController::class, 'store']);
+    Route::put('/classes/{classroom}', [ClassromController::class, 'update']);
+    Route::delete('/classes/{id}', [ClassromController::class, 'destroy']);
 });
