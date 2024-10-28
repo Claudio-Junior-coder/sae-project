@@ -83,4 +83,16 @@ Route::get('/classes/details/{id?}', function ($id = null) {
 })->middleware(['auth', 'verified'])->name('classes.details');
 
 
+//grades
+Route::get('/grades', function () {
+    return Inertia::render('Grades/GradeList');
+})->middleware(['auth', 'verified'])->name('grades');
+
+Route::get('/grades/details/{id?}', function ($id = null) {
+    return Inertia::render('Grades/GradeDetails', [
+        'gradeId' => $id
+    ]);
+})->middleware(['auth', 'verified'])->name('grades.details');
+
+
 require __DIR__.'/auth.php';

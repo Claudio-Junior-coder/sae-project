@@ -69,6 +69,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Classes/Turmas
                                 </NavLink>
+                                <NavLink
+                                    :href="route('grades')"
+                                    :active="route().current('grades')"
+                                >
+                                    Notas
+                                </NavLink>
                             </div>
                         </div>
 
