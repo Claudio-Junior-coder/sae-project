@@ -82,7 +82,7 @@ export default {
     if (this.responsibleId) {
       this.fetchResponsible(this.responsibleId);
     } else {
-      this.$store.commit('responsibles/SET_RESPONSIBLE', { student_id: '', period_id: '', subject: '', responsible: '' });
+      this.$store.commit('responsibles/SET_RESPONSIBLE', { name: '', email: '', password: '' });
     }
   },
   methods: {
