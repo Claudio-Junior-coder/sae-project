@@ -40,6 +40,7 @@
                                   type="password"
                                   id="password"
                                   v-model="responsible.password"
+                                  placeholder="Insira a mesma senha deste responsável ou uma nova senha para salvar as alterações"
                                   required
                                   class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
                           </div>

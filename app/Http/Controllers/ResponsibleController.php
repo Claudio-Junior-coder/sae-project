@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Responsible;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ResponsibleController extends Controller
 {
@@ -22,32 +23,34 @@ class ResponsibleController extends Controller
 
     public function show($id)
     {
-        $period = Responsible::findOrFail($id);
-        return response()->json($period);
+        $responsible = Responsible::findOrFail($id);
+        $responsible['password'] = '';
+        return response()->json($responsible);
     }
 
     public function store(Request $request)
     {
         $this->validadeData($request);
+        $request['password'] = Hash::make($request['password']);
+        $responsible = Responsible::create($request->all());
 
-        $period = Responsible::create($request->all());
-
-        return response()->json($period, 201);
+        return response()->json($responsible, 201);
     }
 
-    public function update(Request $request, Responsible $period)
+    public function update(Request $request, Responsible $responsible)
     {
         $this->validadeData($request);
 
-        $period->update($request->all());
+        $request['password'] = Hash::make($request['password']);
+        $responsible->update($request->all());
 
-        return response()->json($period, 200);
+        return response()->json($responsible, 200);
     }
 
     public function destroy($id)
     {
-        $period = Responsible::findOrFail($id); 
-        $period->delete(); 
+        $responsible = Responsible::findOrFail($id); 
+        $responsible->delete(); 
         
         return response()->json(['message' => 'Responsável deletado com sucesso.'], 200);
     }
