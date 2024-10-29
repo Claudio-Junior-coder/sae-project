@@ -95,4 +95,16 @@ Route::get('/grades/details/{id?}', function ($id = null) {
 })->middleware(['auth', 'verified'])->name('grades.details');
 
 
+//responsibles
+Route::get('/responsibles', function () {
+    return Inertia::render('Responsibles/ResponsibleList');
+})->middleware(['auth', 'verified'])->name('responsibles');
+
+Route::get('/responsibles/details/{id?}', function ($id = null) {
+    return Inertia::render('Responsibles/ResponsibleDetails', [
+        'responsibleId' => $id
+    ]);
+})->middleware(['auth', 'verified'])->name('responsibles.details');
+
+
 require __DIR__.'/auth.php';

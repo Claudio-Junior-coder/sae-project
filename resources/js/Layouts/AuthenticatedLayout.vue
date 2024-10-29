@@ -75,6 +75,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Notas
                                 </NavLink>
+                                <NavLink
+                                    :href="route('responsibles')"
+                                    :active="route().current('responsibles')"
+                                >
+                                    Responsáveis
+                                </NavLink>
                             </div>
                         </div>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BehaviorController;
 use App\Http\Controllers\ClassromController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\ResponsibleController;
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -50,4 +51,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/grades', [GradeController::class, 'store']);
     Route::put('/grades/{grade}', [GradeController::class, 'update']);
     Route::delete('/grades/{id}', [GradeController::class, 'destroy']);
+
+    Route::get('/responsibles', [ResponsibleController::class, 'index']);
+    Route::get('/responsibles/{responsible}', [ResponsibleController::class, 'show']);
+    Route::post('/responsibles', [ResponsibleController::class, 'store']);
+    Route::put('/responsibles/{responsible}', [ResponsibleController::class, 'update']);
+    Route::delete('/responsibles/{id}', [ResponsibleController::class, 'destroy']);
 });
