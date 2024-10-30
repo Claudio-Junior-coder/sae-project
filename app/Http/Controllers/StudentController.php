@@ -23,7 +23,7 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        $student = Student::with(['responsibles', 'grades'])->findOrFail($id);
+        $student = Student::findOrFail($id);
         return response()->json($student);
     }
 

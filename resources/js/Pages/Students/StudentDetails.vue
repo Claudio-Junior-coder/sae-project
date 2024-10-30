@@ -44,12 +44,14 @@
                                     required
                                     class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
                                     <option value="">Selecione um responsável</option>
-                                    <option value="1">Fábio da Silva</option>
+                                    <option v-for="responsible in responsibles" :key="responsible.id" :value="responsible.id">
+                                        {{ responsible.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div>
                                 <label for="classroom" class="block text-sm font-medium text-gray-700 mb-2">
-                                    Turma
+                                    Classe/Turma
                                 </label>
                                 <select
                                     id="classroom"
@@ -57,7 +59,9 @@
                                     required
                                     class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
                                     <option value="">Selecione uma turma</option>
-                                    <option value="1">A</option>
+                                    <option v-for="classroom in classes" :key="classroom.id" :value="classroom.id">
+                                        {{ classroom.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="flex justify-end space-x-3">
@@ -93,9 +97,13 @@ export default {
     },
   },
   computed: {
-    ...mapState('students', ['student']), // Mapeia student da store
+    ...mapState('students', ['student']), // Estado do aluno
+    ...mapState('responsibles', { responsibles: state => state.responsibles }), // Estado de responsáveis
+    ...mapState('classroom', { classes: state => state.classes }), // Estado de classes
   },
   created() {
+    this.fetchResponsibles();
+    this.fetchClasses();
     if (this.studentId) {
       this.fetchStudent(this.studentId);
     } else {
@@ -104,6 +112,8 @@ export default {
   },
   methods: {
     ...mapActions('students', ['fetchStudent', 'updateStudent', 'createStudent']),
+    ...mapActions('responsibles', ['fetchResponsibles']),
+    ...mapActions('classroom', ['fetchClasses']),
     async saveStudent() {
       if (this.studentId) {
         await this.updateStudent(this.student);
