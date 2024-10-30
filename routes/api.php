@@ -2,13 +2,19 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PeriodController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BehaviorController;
 use App\Http\Controllers\ClassromController;
-use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ResponsibleController;
+use App\Http\Controllers\Auth\ResponsibleAuthController;
+
+Route::prefix('responsibles')->group(function () {
+    Route::post('login', [ResponsibleAuthController::class, 'login']);
+    Route::post('logout', [ResponsibleAuthController::class, 'logout'])->middleware('auth:sanctum');
+});
 
 Route::middleware('auth:sanctum')->group(function () {
 

@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'responsible' => [
+        'driver' => 'session',
+        'provider' => 'responsibles',
+        ],
+        
+        'api_responsible' => [
+            'driver' => 'sanctum',
+            'provider' => 'responsibles',
+        ],
     ],
 
     /*
@@ -65,6 +75,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
+        'responsibles' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Responsible::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
