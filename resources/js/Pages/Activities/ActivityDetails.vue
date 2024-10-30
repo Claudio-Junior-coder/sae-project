@@ -11,29 +11,33 @@
 
                         <form class="space-y-6" @submit.prevent="saveActivity">
                           <div>
-                                <label for="studentId" class="block text-sm font-medium text-gray-700 mb-2">
+                                <label for="student" class="block text-sm font-medium text-gray-700 mb-2">
                                     Aluno
                                 </label>
                                 <select
-                                    id="studentId"
+                                    id="student"
                                     v-model.number="activity.student_id"
                                     required
                                     class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
                                     <option value="">Selecione um aluno</option>
-                                    <option value="1">Fábio da Silva</option>
+                                    <option v-for="student in students" :key="student.id" :value="student.id">
+                                        {{ student.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div>
-                                <label for="periodId" class="block text-sm font-medium text-gray-700 mb-2">
+                                <label for="period" class="block text-sm font-medium text-gray-700 mb-2">
                                     Período
                                 </label>
                                 <select
-                                    id="periodId"
+                                    id="period"
                                     v-model.number="activity.period_id"
                                     required
                                     class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
-                                    <option value="">Selecione um periodo</option>
-                                    <option value="1">1 semestre</option>
+                                    <option value="">Selecione um período</option>
+                                    <option v-for="period in periods" :key="period.id" :value="period.id">
+                                        {{ period.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div>
@@ -94,8 +98,12 @@ export default {
   },
   computed: {
     ...mapState('activities', ['activity']), 
+    ...mapState('periods', { periods: state => state.periods }),
+    ...mapState('students', { students: state => state.students }),
   },
   created() {
+    this.fetchPeriods();
+    this.fetchStudents();
     if (this.activityId) {
       this.fetchActivity(this.activityId);
     } else {
@@ -104,6 +112,8 @@ export default {
   },
   methods: {
     ...mapActions('activities', ['fetchActivity', 'updateActivity', 'createActivity']),
+    ...mapActions('periods', ['fetchPeriods']),
+    ...mapActions('students', ['fetchStudents']),
     async saveActivity() {
       if (this.activityId) {
         await this.updateActivity(this.activity);
