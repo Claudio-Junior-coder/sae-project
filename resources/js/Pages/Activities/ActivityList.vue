@@ -34,7 +34,7 @@
                             <thead>
                                 <tr class="text-left bg-blue-50 text-gray-700 uppercase text-sm tracking-wider">
                                     <th class="border p-4">Descrição</th>
-                                    <th class="border p-4">Status</th>
+                                    <th class="border p-4">Tipo</th>
                                     <th class="border p-4">Editar</th>
                                     <th class="border p-4">Excluir</th>
                                 </tr>
@@ -45,7 +45,9 @@
                                     :key="activity.id"
                                     class="hover:bg-gray-100 transition">
                                     <td class="border p-4 text-gray-800">{{ activity.description }}</td>
-                                    <td class="border p-4 text-gray-800">{{ activity.status }}</td>
+                                    <td class="border p-4 text-gray-800" v-if="activity.type == 0">Atividades Pendentes</td>
+                                    <td class="border p-4 text-gray-800" v-if="activity.type == 1">Próximas Provas</td>
+                                    <td class="border p-4 text-gray-800" v-if="activity.type == 2">Último Aviso</td>
                                     <td class="border p-4 text-center">
                                         <a
                                             :href="`/activities/details/${activity.id}`"

@@ -7,9 +7,11 @@ import classroom from './classroom';
 import grades from './grades';
 import responsibles from './responsibles';
 import authModule from './authModule';
+import dashboard from './dashboard';
 
 export default createStore({
   modules: {
+    dashboard,
     auth: authModule,
     responsibles,
     grades,

@@ -11,8 +11,6 @@ class PeriodController extends Controller
     public function validadeData($request) {
         return $request->validate([
             'name' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:datainicio',
         ]);
     }
 

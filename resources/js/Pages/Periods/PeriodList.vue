@@ -34,8 +34,8 @@
                             <thead>
                                 <tr class="text-left bg-blue-50 text-gray-700 uppercase text-sm tracking-wider">
                                     <th class="border p-4">Nome</th>
-                                    <th class="border p-4">Data Inicial</th>
-                                    <th class="border p-4">Data Final</th>
+                                   <!--  <th class="border p-4">Data Inicial</th>
+                                    <th class="border p-4">Data Final</th> -->
                                     <th class="border p-4">Editar</th>
                                     <th class="border p-4">Excluir</th>
                                 </tr>
@@ -46,8 +46,8 @@
                                     :key="period.id"
                                     class="hover:bg-gray-100 transition">
                                     <td class="border p-4 text-gray-800">{{ period.name }}</td>
-                                    <td class="border p-4 text-gray-800">{{ formatDate(period.start_date) }}</td>
-                                    <td class="border p-4 text-gray-800">{{ formatDate(period.end_date) }}</td>
+                                  <!--   <td class="border p-4 text-gray-800">{{ formatDate(period.start_date) }}</td>
+                                    <td class="border p-4 text-gray-800">{{ formatDate(period.end_date) }}</td> -->
                                     <td class="border p-4 text-center">
                                         <a
                                             :href="`/periods/details/${period.id}`"
@@ -123,11 +123,11 @@
             }
         },
         
-        formatDate(date) {
+        /* formatDate(date) {
             const parsedDate = new Date(date + 'T00:00:00'); // Adiciona hora para evitar ajuste de fuso horário
             const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
             return parsedDate.toLocaleDateString('pt-BR', options);
-        },
+        }, */
     }
   };
   </script>

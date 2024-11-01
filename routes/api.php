@@ -10,10 +10,12 @@ use App\Http\Controllers\BehaviorController;
 use App\Http\Controllers\ClassromController;
 use App\Http\Controllers\ResponsibleController;
 use App\Http\Controllers\Auth\ResponsibleAuthController;
+use App\Http\Controllers\StudentDashboardController;
 
 Route::prefix('responsibles')->group(function () {
     Route::post('login', [ResponsibleAuthController::class, 'login']);
     Route::post('logout', [ResponsibleAuthController::class, 'logout'])->middleware('auth:sanctum');
+    Route::get('/dashboard', [StudentDashboardController::class, 'index'])->middleware('auth:sanctum');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -62,5 +64,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/responsibles/{responsible}', [ResponsibleController::class, 'show']);
     Route::post('/responsibles', [ResponsibleController::class, 'store']);
     Route::put('/responsibles/{responsible}', [ResponsibleController::class, 'update']);
-    Route::delete('/responsibles/{id}', [ResponsibleController::class, 'destroy']);
+    Route::delete('/responsibles/{id}', [ResponsibleController::class, 'destroy']);    
 });

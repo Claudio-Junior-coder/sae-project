@@ -12,7 +12,7 @@ class ActivityController extends Controller
             'student_id' => 'required',
             'period_id' => 'required',
             'description' => 'required|string|max:255',
-            'status' => 'required|string|max:15',
+            'type' => 'required|numeric|max:15',
         ]);
     }
 

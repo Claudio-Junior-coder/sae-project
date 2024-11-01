@@ -114,15 +114,11 @@ Route::prefix('responsibles')->group(function () {
     });
 });
 
-//protected responsibles dashboard
-Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix('responsibles')->group(function () {
-        Route::get('dashboard', function () {
-            return Inertia::render('ResponsibleDashboard/ResponsibleDashboard');
-        });
+Route::prefix('responsibles')->group(function () {
+    Route::get('dashboard', function () {
+        return Inertia::render('ResponsibleDashboard/ResponsibleDashboard');
     });
 });
-
 
 
 require __DIR__.'/auth.php';

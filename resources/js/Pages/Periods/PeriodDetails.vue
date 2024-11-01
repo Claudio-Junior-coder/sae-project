@@ -22,7 +22,7 @@
                                     required
                                     class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
                             </div>
-                            <div>
+<!--                             <div>
                                 <label for="start_date" class="block text-sm font-medium text-gray-700 mb-2">
                                     Data Inicial:
                                 </label>
@@ -43,7 +43,7 @@
                                     v-model="period.end_date"
                                     required
                                     class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
-                            </div>
+                            </div> -->
                             <div class="flex justify-end space-x-3">
                                 <a href="/periods" class="px-6 py-3 bg-gray-300 text-gray-800 rounded-lg shadow hover:bg-gray-200 transition">
                                     Cancelar

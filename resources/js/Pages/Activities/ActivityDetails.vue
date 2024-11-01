@@ -41,6 +41,21 @@
                                 </select>
                             </div>
                             <div>
+                                <label for="type" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Tipo de Atividade
+                                </label>
+                                <select
+                                    id="type"
+                                    v-model.number="activity.type"
+                                    required
+                                    class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
+                                    <option value="">Selecione um tipo</option>
+                                    <option value="0">Atividades Pendentes</option>
+                                    <option value="1">Próximas Provas</option>
+                                    <option value="2">Último Aviso</option>
+                                </select>
+                            </div>
+                            <div>
                                 <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
                                     Descrição
                                 </label>
@@ -50,20 +65,7 @@
                                     v-model="activity.description"
                                     required
                                     class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
-                            </div>
-                            <div>
-                                <label for="periodId" class="block text-sm font-medium text-gray-700 mb-2">
-                                    Status
-                                </label>
-                                <select
-                                    id="periodId"
-                                    v-model.number="activity.status"
-                                    required
-                                    class="block w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition">
-                                    <option value="pendente">Pendente</option>
-                                    <option value="concluído">Concluído</option>
-                                </select>
-                            </div>
+                            </div>                            
                             <div class="flex justify-end space-x-3">
                                 <a href="/activities" class="px-6 py-3 bg-gray-300 text-gray-800 rounded-lg shadow hover:bg-gray-200 transition">
                                     Cancelar
@@ -107,7 +109,7 @@ export default {
     if (this.activityId) {
       this.fetchActivity(this.activityId);
     } else {
-      this.$store.commit('activities/SET_ACTIVITY', { student_id: '', period_id: '', description: '', status: ''});
+      this.$store.commit('activities/SET_ACTIVITY', { type: '', student_id: '', period_id: '', description: '', status: ''});
     }
   },
   methods: {

@@ -42,8 +42,8 @@ return [
         ],
 
         'responsible' => [
-        'driver' => 'session',
-        'provider' => 'responsibles',
+            'driver' => 'session',
+            'provider' => 'responsibles',
         ],
         
         'api_responsible' => [

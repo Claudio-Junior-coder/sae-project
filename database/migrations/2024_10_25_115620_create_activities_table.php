@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->integer('type');
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->foreignId('period_id')->constrained('periods')->onDelete('cascade');
             $table->string('description');
-            $table->enum('status', ['pendente', 'concluído']);
             $table->timestamps();
         });
     }

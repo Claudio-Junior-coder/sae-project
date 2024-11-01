@@ -20,4 +20,12 @@ class Grade extends Model
     {
         return $this->belongsTo(Period::class);
     }
+
+    protected static function booted()
+    {
+        static::saved(function ($grade) {
+            $student = $grade->student;
+            $student->calculateFinalGrade();
+        });
+    }
 }
