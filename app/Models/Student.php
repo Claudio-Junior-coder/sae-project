@@ -38,14 +38,26 @@ class Student extends Model
 
     public function calculateFinalGrade()
     {
-        // Obtém as notas dos 4 trimestres e calcula a média
-        $totalGrade = $this->grades()->sum('grade');
-        $count = $this->grades()->count();
+        // Agrupa as notas por trimestre usando 'period_id'
+        $gradesByPeriod = $this->grades()->get()->groupBy('period_id');
 
-        if ($count == 4) { // Verifica se tem 4 notas de trimestres
+        // Verifica se há 4 trimestres para realizar o cálculo da média final
+        if ($gradesByPeriod->count() == 4) {
+            $totalGrade = 0;
+
+            // Calcula a média de cada trimestre
+            foreach ($gradesByPeriod as $periodGrades) {
+                $periodAverage = $periodGrades->avg('grade');
+                $totalGrade += $periodAverage;
+            }
+
+            // Calcula a média anual com base nas médias trimestrais
             $this->final_grade = $totalGrade / 4;
+
+            // Define o status de aprovação
             $this->approval_status = $this->final_grade >= 5 ? 'APROVADO' : 'REPROVADO';
             $this->save();
         }
     }
+
 }

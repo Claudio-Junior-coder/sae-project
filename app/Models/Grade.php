@@ -24,8 +24,15 @@ class Grade extends Model
     protected static function booted()
     {
         static::saved(function ($grade) {
-            $student = $grade->student;
-            $student->calculateFinalGrade();
+            $grade->student->calculateFinalGrade();
+        });
+    
+        static::updated(function ($grade) {
+            $grade->student->calculateFinalGrade();
+        });
+    
+        static::deleted(function ($grade) {
+            $grade->student->calculateFinalGrade();
         });
     }
 }

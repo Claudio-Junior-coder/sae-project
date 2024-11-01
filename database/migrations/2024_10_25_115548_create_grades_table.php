@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Index para garantir que não haja duplicação de trimestre para um mesmo aluno
-            $table->unique(['student_id', 'period_id']);
+            /* $table->unique(['student_id', 'period_id']); */
         });
     }
 
