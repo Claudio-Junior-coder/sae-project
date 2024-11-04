@@ -27,15 +27,16 @@ function handleImageError() {
 </script>
 
 <template>
-    <Head title="Welcome" />
-    <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 min-h-screen">
+    <Head title="Sistema de Acompanhamento Escolar" />
+    <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 max-h-screen">
         <img
             id="background"
-            class="absolute -left-20 top-0 max-w-[877px]"
+            class="absolute -left-20 top-0 max-h-screen"
             src="https://laravel.com/assets/img/welcome/background.svg"/>
             
         <div class="relative flex flex-col items-center justify-center min-h-screen">
-            <div class="flex justify-center mb-10">
+          
+            <div class="flex justify-center mb-10 items-center">
                 <svg
                     class="h-20 w-auto text-white lg:h-24 lg:text-[#FF2D20]"
                     viewBox="0 0 62 65"
@@ -46,20 +47,28 @@ function handleImageError() {
                         fill="currentColor"
                     />
                 </svg>
+                <h1 class="text-4xl ml-5">Sistema de Acompanhamento Escolar</h1>
             </div>
 
             <div class="flex flex-col items-center space-y-4">
+                
+                <Link
+                    :href="route('login')"
+                    class="w-48 text-center rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition">
+                    Login (Pai)
+                </Link>
+
                 <Link
                     :href="route('login')"
                     class="w-48 text-center rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition">
-                    Log in
+                    Login (Admin)
                 </Link>
 
                 <Link
                     v-if="canRegister"
                     :href="route('register')"
                     class="w-48 text-center rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">
-                    Register
+                    Cadastrar (Admin)
                 </Link>
             </div>
         </div>
