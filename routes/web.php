@@ -111,7 +111,7 @@ Route::get('/responsibles/details/{id?}', function ($id = null) {
 Route::prefix('responsibles')->group(function () {
     Route::get('login', function () {
         return Inertia::render('ResponsibleDashboard/ResponsibleLogin');
-    });
+    })->name('responsibles.login');
 });
 
 Route::prefix('responsibles')->group(function () {

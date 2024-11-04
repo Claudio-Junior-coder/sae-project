@@ -53,7 +53,7 @@ function handleImageError() {
             <div class="flex flex-col items-center space-y-4">
                 
                 <Link
-                    :href="route('login')"
+                    :href="route('responsibles.login')"
                     class="w-48 text-center rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition">
                     Login (Pai)
                 </Link>
